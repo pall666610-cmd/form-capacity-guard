@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Form Capacity Guard logo source</title>
+  <desc id="desc">A custom form sheet with a capacity gauge and check mark.</desc>
+  <rect width="128" height="128" rx="24" fill="#F8FAFD"/>
+  <rect x="28" y="18" width="72" height="92" rx="12" fill="#FFFFFF" stroke="#174EA6" stroke-width="6"/>
+  <path d="M46 43h36M46 58h30M46 73h22" stroke="#202124" stroke-width="6" stroke-linecap="round"/>
+  <path d="M36 96a36 36 0 0 1 72 0" fill="none" stroke="#0F9D58" stroke-width="10" stroke-linecap="round"/>
+  <path d="M66 92l11 11 24-29" fill="none" stroke="#0F9D58" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="96" r="5" fill="#0F9D58"/>
+  <circle cx="108" cy="96" r="5" fill="#0F9D58"/>
+</svg>

@@ -1,0 +1,18 @@
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Apps Script / clasp local state
+.clasp.json
+.clasprc.json
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+
+# Evidence files should be linked from TEST_PLAN.md, not committed by accident.
+evidence/
+screenshots/raw/

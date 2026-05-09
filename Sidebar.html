@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        color: #202124;
+        font-family: Arial, "Noto Sans TC", sans-serif;
+        font-size: 13px;
+        margin: 0;
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 10px;
+      }
+
+      h2 {
+        border-top: 1px solid #e0e0e0;
+        font-size: 14px;
+        margin: 18px 0 10px;
+        padding-top: 14px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin: 12px 0 6px;
+      }
+
+      input[type="number"],
+      input[type="text"],
+      select,
+      textarea {
+        border: 1px solid #dadce0;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 13px;
+        padding: 8px;
+        width: 100%;
+      }
+
+      textarea {
+        min-height: 72px;
+        resize: vertical;
+      }
+
+      .row {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+        margin: 10px 0;
+      }
+
+      .row input {
+        flex: 0 0 auto;
+      }
+
+      .muted {
+        color: #5f6368;
+        line-height: 1.5;
+      }
+
+      .status {
+        background: #f8fafd;
+        border: 1px solid #dfe7f3;
+        border-radius: 8px;
+        line-height: 1.45;
+        margin: 10px 0 14px;
+        padding: 10px;
+      }
+
+      .notice {
+        border-radius: 8px;
+        line-height: 1.45;
+        margin: 10px 0;
+        padding: 10px;
+      }
+
+      .notice.error {
+        background: #fce8e6;
+        border: 1px solid #f4c7c3;
+        color: #a50e0e;
+      }
+
+      .notice.success {
+        background: #e6f4ea;
+        border: 1px solid #ceead6;
+        color: #137333;
+      }
+
+      .rule {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin: 10px 0;
+        padding: 10px;
+      }
+
+      button {
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        padding: 9px 12px;
+      }
+
+      .primary {
+        background: #0f9d58;
+        color: white;
+      }
+
+      .secondary {
+        background: #e8f0fe;
+        color: #174ea6;
+      }
+
+      .danger {
+        background: #fce8e6;
+        color: #c5221f;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .loading {
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .small {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Capacity Guard</h1>
+    <div id="app" class="loading">
+      <div class="status">正在載入設定...</div>
+    </div>
+
+    <script>
+      let state = null;
+
+      function render(nextState) {
+        state = nextState;
+        const config = state.config;
+        const rules = config.choiceLimiter.rules || [];
+        const ruleMap = new Map(rules.map(rule => [String(rule.itemId), rule]));
+
+        document.getElementById('app').className = '';
+        document.getElementById('app').innerHTML = `
+          <div class="status">
+            <strong>${escapeHtml(state.title)}</strong><br>
+            回覆數：${state.responseCount}<br>
+            表單狀態：${state.acceptingResponses ? '接受回覆中' : '已關閉'}<br>
+            送出觸發器：${state.triggerInstalled ? '已安裝' : '未安裝'}
+          </div>
+          <div id="notice"></div>
+
+          <h2>總回覆人數限制</h2>
+          <div class="row">
+            <input id="enabled" type="checkbox" ${config.enabled ? 'checked' : ''}>
+            <span>啟用總回覆人數限制</span>
+          </div>
+
+          <label for="limit">回覆人數上限</label>
+          <input id="limit" type="number" min="1" step="1" value="${config.limit || ''}" placeholder="例如：50">
+
+          <div class="row">
+            <input id="autoClose" type="checkbox" ${config.autoClose ? 'checked' : ''}>
+            <span>達到上限時自動關閉表單</span>
+          </div>
+
+          <label for="closedMessage">表單關閉訊息</label>
+          <textarea id="closedMessage">${escapeHtml(config.closedMessage || '')}</textarea>
+
+          <h2>選項名額限制</h2>
+          <div class="row">
+            <input id="choiceLimiterEnabled" type="checkbox" ${config.choiceLimiter.enabled ? 'checked' : ''}>
+            <span>選項額滿後自動隱藏</span>
+          </div>
+
+          <div class="row">
+            <input id="closeFormWhenAllFull" type="checkbox" ${config.choiceLimiter.closeFormWhenAllFull ? 'checked' : ''}>
+            <span>所有已設定選項都額滿時關閉表單</span>
+          </div>
+
+          <label for="fullMessage">所有選項額滿訊息</label>
+          <textarea id="fullMessage">${escapeHtml(config.choiceLimiter.fullMessage || '')}</textarea>
+
+          <div class="muted small">支援下拉選單、單選題與核取方塊。外掛會保存原始選項，方便重新開啟表單或停用限制時恢復。</div>
+          <div id="rules">
+            ${state.choiceItems.length ? state.choiceItems.map(item => renderChoiceRule(item, ruleMap.get(String(item.id)))).join('') : '<div class="muted">這份表單目前沒有可支援的選項題。</div>'}
+          </div>
+
+          <div class="actions">
+            <button class="primary" onclick="save()">儲存設定</button>
+            <button class="secondary" onclick="checkNow()">立即檢查</button>
+            <button class="secondary" onclick="reopen()">重新開啟表單</button>
+            <button class="danger" onclick="disable()">停用限制</button>
+          </div>
+        `;
+      }
+
+      function renderChoiceRule(item, rule) {
+        const enabled = rule ? rule.enabled : false;
+        const limit = rule ? rule.limit : '';
+        return `
+          <div class="rule" data-item-id="${item.id}">
+            <div class="row">
+              <input class="choice-enabled" type="checkbox" ${enabled ? 'checked' : ''}>
+              <strong>${escapeHtml(item.title)}</strong>
+            </div>
+            <div class="muted">${escapeHtml(item.type)}，目前 ${item.choices.length} 個選項</div>
+            <label>每個選項名額上限</label>
+            <input class="choice-limit" type="number" min="1" step="1" value="${limit}" placeholder="例如：1">
+          </div>
+        `;
+      }
+
+      function collectSettings() {
+        const choiceRules = Array.from(document.querySelectorAll('.rule')).map(rule => ({
+          itemId: rule.getAttribute('data-item-id'),
+          enabled: rule.querySelector('.choice-enabled').checked,
+          limit: rule.querySelector('.choice-limit').value
+        }));
+
+        return {
+          enabled: document.getElementById('enabled').checked,
+          limit: document.getElementById('limit').value,
+          autoClose: document.getElementById('autoClose').checked,
+          closedMessage: document.getElementById('closedMessage').value,
+          choiceLimiterEnabled: document.getElementById('choiceLimiterEnabled').checked,
+          closeFormWhenAllFull: document.getElementById('closeFormWhenAllFull').checked,
+          fullMessage: document.getElementById('fullMessage').value,
+          choiceRules
+        };
+      }
+
+      function save() {
+        const settings = collectSettings();
+        const hasTotalLimit = settings.enabled && Number(settings.limit) > 0;
+        const hasChoiceLimit = settings.choiceLimiterEnabled && settings.choiceRules.some(rule => rule.enabled);
+
+        if (!hasTotalLimit && !hasChoiceLimit) {
+          showNotice('請至少啟用一個總回覆人數限制或選項名額限制後再儲存。', 'error');
+          return;
+        }
+
+        setLoading(true);
+        google.script.run
+          .withSuccessHandler(nextState => {
+            render(nextState);
+            showNotice('設定已儲存，並已檢查目前表單狀態。', 'success');
+          })
+          .withFailureHandler(showError)
+          .saveSettings(settings);
+      }
+
+      function checkNow() {
+        setLoading(true);
+        google.script.run
+          .withSuccessHandler(result => {
+            google.script.run
+              .withSuccessHandler(nextState => {
+                render(nextState);
+                showNotice(escapeHtml(result.message).replace(/\n/g, '<br>'), 'success');
+              })
+              .withFailureHandler(showError)
+              .getInitialState();
+          })
+          .withFailureHandler(showError)
+          .runSidebarCheck();
+      }
+
+      function reopen() {
+        setLoading(true);
+        google.script.run
+          .withSuccessHandler(nextState => {
+            render(nextState);
+            showNotice('表單已重新開啟，並已恢復保存的選項。', 'success');
+          })
+          .withFailureHandler(showError)
+          .reopenForm();
+      }
+
+      function disable() {
+        setLoading(true);
+        google.script.run
+          .withSuccessHandler(nextState => {
+            render(nextState);
+            showNotice('名額限制已停用，並已恢復保存的選項。', 'success');
+          })
+          .withFailureHandler(showError)
+          .disableGuard();
+      }
+
+      function setLoading(isLoading) {
+        document.getElementById('app').classList.toggle('loading', isLoading);
+      }
+
+      function showError(error) {
+        setLoading(false);
+        showNotice(error.message || error, 'error');
+      }
+
+      function showNotice(message, type) {
+        const notice = document.getElementById('notice');
+        if (!notice) {
+          alert(String(message || '未知錯誤').replace(/<br>/g, '\n'));
+          return;
+        }
+        notice.className = `notice ${type || 'error'}`;
+        notice.innerHTML = type === 'success' ? message : escapeHtml(message || '未知錯誤');
+      }
+
+      function escapeHtml(value) {
+        return String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      google.script.run
+        .withSuccessHandler(render)
+        .withFailureHandler(showError)
+        .getInitialState();
+    </script>
+  </body>
+</html>

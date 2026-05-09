@@ -1,0 +1,20 @@
+{
+  "timeZone": "Asia/Taipei",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/forms.currentonly",
+    "https://www.googleapis.com/auth/script.container.ui",
+    "https://www.googleapis.com/auth/script.scriptapp"
+  ],
+  "addOns": {
+    "common": {
+      "name": "Form Capacity Guard",
+      "logoUrl": "https://www.gstatic.com/images/branding/product/1x/forms_48dp.png",
+      "layoutProperties": {
+        "primaryColor": "#0F9D58",
+        "secondaryColor": "#E8F0FE"
+      }
+    }
+  }
+}
