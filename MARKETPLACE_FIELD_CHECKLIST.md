@@ -20,8 +20,8 @@ Fields to record after setup:
 | Standard Cloud project ID | `<standard-cloud-project-id>` |
 | Apps Script script ID | `<apps-script-script-id>` |
 | Apps Script version number | `<apps-script-version-number>` |
-| Developer name / organization | `<developer-name-or-organization>` |
-| Support email | `<support-email@example.com>` |
+| Developer name / organization | `Lin Po-Ting` |
+| Support email | `linpoting5@gmail.com` |
 
 ## OAuth Consent Screen
 
@@ -45,11 +45,11 @@ Actual URLs to fill:
 
 | Field | URL |
 | --- | --- |
-| Application home page | `https://github.com/<github-owner>/form-capacity-guard` |
-| Privacy Policy URL | `https://github.com/<github-owner>/form-capacity-guard/blob/main/PRIVACY.md` |
-| Terms of Service URL | `https://github.com/<github-owner>/form-capacity-guard/blob/main/TERMS.md` |
-| Support URL | `https://github.com/<github-owner>/form-capacity-guard/issues` |
-| Logo URL | `https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png` |
+| Application home page | `https://github.com/pall666610-cmd/form-capacity-guard` |
+| Privacy Policy URL | `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md` |
+| Terms of Service URL | `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/TERMS.md` |
+| Support URL | `https://github.com/pall666610-cmd/form-capacity-guard/issues` |
+| Logo URL | `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png` |
 
 ## Google Workspace Marketplace SDK
 

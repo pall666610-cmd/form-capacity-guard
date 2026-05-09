@@ -23,21 +23,20 @@ Current asset status:
 - `assets/logo-source.svg` has been created as a custom source draft.
 - `assets/logo-32.png` has been exported.
 - `assets/logo-128.png` has been exported.
-- Public hosting for `assets/logo-128.png` is still pending until the GitHub repository exists.
+- Public hosting for `assets/logo-128.png` is complete through the GitHub raw URL.
 
 Checklist:
 
 - [x] Logo does not include Google Forms branding.
 - [x] Logo is readable at 32px.
 - [ ] Logo matches the sidebar and Marketplace screenshots.
-- [ ] `appsscript.json` `logoUrl` is updated to a public custom logo URL before submission.
+- [x] `appsscript.json` `logoUrl` is updated to a public custom logo URL before submission.
 
-Current blocker:
+Current logo URL:
 
-- `appsscript.json` still uses the Google Forms official icon: `https://www.gstatic.com/images/branding/product/1x/forms_48dp.png`.
-- Keep the manifest unchanged until `assets/logo-128.png` exists at a public HTTPS URL.
-- Replace it with `https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png` after the public repository and custom logo PNG exist.
-- Do not create the final Apps Script version for Marketplace submission until this replacement is complete.
+- `appsscript.json` uses `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png`.
+- The raw URL was verified with `200 OK` and `Content-Type: image/png`.
+- Do not create the final Apps Script version if this URL changes or becomes unavailable.
 
 ## Marketplace Screenshots
 

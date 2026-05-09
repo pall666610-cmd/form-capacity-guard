@@ -6,7 +6,7 @@ The latest source code in the main branch is supported.
 
 ## Reporting a vulnerability
 
-Please report security issues privately to the maintainer email listed in the Marketplace listing. If no private contact is available yet, create a GitHub issue with a minimal description and avoid including sensitive form data.
+Please report security issues privately to linpoting5@gmail.com. You may also open a minimal public issue at https://github.com/pall666610-cmd/form-capacity-guard/issues, but do not include sensitive form data, private URLs, credentials, or exploit details in public issues.
 
 ## Security principles
 

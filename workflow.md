@@ -637,12 +637,12 @@ Recommended identity decisions:
 
 Public URL replacement list after the repository exists:
 
-- Application home page: `https://github.com/<github-owner>/form-capacity-guard`
-- Support URL: `https://github.com/<github-owner>/form-capacity-guard/issues`
-- Privacy Policy URL: `https://github.com/<github-owner>/form-capacity-guard/blob/main/PRIVACY.md`
-- Terms of Service URL: `https://github.com/<github-owner>/form-capacity-guard/blob/main/TERMS.md`
-- Security policy URL: `https://github.com/<github-owner>/form-capacity-guard/blob/main/SECURITY.md`
-- Logo URL: `https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png`
+- Application home page: `https://github.com/pall666610-cmd/form-capacity-guard`
+- Support URL: `https://github.com/pall666610-cmd/form-capacity-guard/issues`
+- Privacy Policy URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md`
+- Terms of Service URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/TERMS.md`
+- Security policy URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/SECURITY.md`
+- Logo URL: `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png`
 
 Safe git sequence prepared:
 
@@ -653,7 +653,7 @@ git status --short
 git add .
 git status --short
 git commit -m "Initial Form Capacity Guard open-source release"
-git remote add origin https://github.com/<github-owner>/form-capacity-guard.git
+git remote add origin https://github.com/pall666610-cmd/form-capacity-guard.git
 git push -u origin main
 ```
 
@@ -668,6 +668,38 @@ Remaining blockers:
 Current completion: 88%.
 
 Why: the audit is clean enough to proceed, and logo PNG assets now exist. The remaining work depends on external identity decisions and creating the public GitHub repository.
+
+## Stage 9 Update: Public GitHub Repository Created And Manifest Logo URL Replaced
+
+Completed:
+
+- Confirmed GitHub owner as `pall666610-cmd`, developer / publisher name as `Lin Po-Ting`, and support email as `linpoting5@gmail.com`.
+- Manually privacy-checked the committed screenshots for account emails, profile photos, customer data, private response contents, and unrelated browser UI.
+- Initialized local Git, set the branch to `main`, configured local commit identity, and created the first commit: `d942b1f Initial Form Capacity Guard open-source release`.
+- Created and pushed the public GitHub repository: `https://github.com/pall666610-cmd/form-capacity-guard`.
+- Verified the raw logo URL: `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png` returned `200 OK` and `Content-Type: image/png`.
+- Updated `appsscript.json` `addOns.common.logoUrl` to the verified public custom logo URL.
+- Replaced GitHub/support/public URL placeholders in README, Privacy, Terms, Security, Marketplace, release, asset, and GitHub prep docs.
+- Reran Apps Script syntax preflight: `Apps Script, sidebar JavaScript, and manifest syntax OK`.
+- Reran public repository audit scan: no API keys, OAuth tokens, private keys, passwords, unredacted Google Forms edit URLs, Google Sheets URLs, unresolved GitHub/support/developer placeholders, or Google Forms official icon URL found.
+
+Operational notes:
+
+- GitHub CLI `gh` was not available in the elevated Windows user environment, so the user created the empty public repository in the GitHub web UI.
+- The first sandbox-created `.git` directory triggered Git dubious ownership when using the Windows user. Adding this project path to Git `safe.directory` fixed the push flow.
+
+Remaining blockers:
+
+- Create or link the standard Google Cloud project.
+- Fill the Apps Script script ID, Apps Script version number, and standard Cloud project ID after those external resources exist.
+- Configure OAuth consent screen with the public URLs and custom logo.
+- Configure Google Workspace Marketplace SDK.
+- Create the final Apps Script version after confirming the manifest logo URL remains stable.
+- Decide whether to capture additional reviewer screenshots for FCG-006 through FCG-011.
+
+Current completion: 91%.
+
+Why: public repository setup, public URL replacement, and manifest logo replacement are complete. The remaining work is external Google Cloud, OAuth consent, Marketplace SDK, Apps Script versioning, and submission.
 
 ## Next Conversation Prompt After Stage 7
 

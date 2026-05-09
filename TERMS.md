@@ -19,3 +19,9 @@ The add-on is provided "as is" without warranties. Users are responsible for tes
 Google Forms may allow multiple users to submit at nearly the same time. This add-on checks limits after each submission, so small overbooking can still happen in high-concurrency scenarios.
 
 By using the add-on, you agree that the maintainers are not liable for lost responses, overbooking, business interruption, or other damages resulting from use of the add-on.
+
+### Public project links
+
+- Repository: https://github.com/pall666610-cmd/form-capacity-guard
+- Support: https://github.com/pall666610-cmd/form-capacity-guard/issues
+- Privacy Policy: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md

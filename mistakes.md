@@ -172,7 +172,7 @@ Rule: before creating the Apps Script version for review, compare `RELEASE_PREPA
 
 ## 2026-05-08: Google Forms official icon is not a final Marketplace logo
 
-Problem: `appsscript.json` still used `https://www.gstatic.com/images/branding/product/1x/forms_48dp.png`.
+Problem: `appsscript.json` still used `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png`.
 
 Root cause: the MVP used a convenient Google Forms icon placeholder before custom branding existed.
 
@@ -219,3 +219,33 @@ Root cause: local asset creation and public URL availability are separate releas
 Effective fix: export `assets/logo-32.png` and `assets/logo-128.png` locally, document them as ready, but keep `appsscript.json` on the temporary icon until the committed raw GitHub URL exists.
 
 Rule: separate logo asset readiness from logo URL readiness in release checklists.
+
+## 2026-05-09: Sandbox-created Git metadata can trigger dubious ownership
+
+Problem: `git init` succeeded in the sandbox, but elevated Git operations from the Windows user reported dubious ownership because `.git` was owned by the sandbox user.
+
+Root cause: the Codex sandbox user and the Windows desktop user are different identities, and Git protects repositories whose ownership does not match the current user.
+
+Effective fix: add the exact project path to Git `safe.directory`, then continue branch, commit, remote, and push operations.
+
+Rule: when a Windows Codex workspace needs elevated Git network operations after sandbox `git init`, expect a possible safe-directory step and keep it scoped to the exact repository path.
+
+## 2026-05-09: GitHub CLI may not exist in the elevated user PATH
+
+Problem: `gh repo create` was not recognized when executed as the elevated Windows user.
+
+Root cause: GitHub CLI was unavailable in that user's PATH, even though the GitHub connector could read the authenticated profile.
+
+Effective fix: have the user create the empty public repository in the GitHub web UI, then use ordinary `git remote add` and `git push`.
+
+Rule: if repository creation tooling is unavailable, create an empty GitHub repo manually with no README, no gitignore, and no license, then push the already-prepared local commit.
+
+## 2026-05-09: Do not update manifest logo until raw URL is verified
+
+Problem: the manifest needed a public custom logo URL, but the URL should not be trusted just because the file was committed.
+
+Root cause: raw GitHub URLs can fail if the repository, branch, path, or visibility is wrong.
+
+Effective fix: verify the raw URL with an HTTP HEAD request and confirm `200 OK` plus `Content-Type: image/png` before editing `appsscript.json`.
+
+Rule: update `appsscript.json` `logoUrl` only after the exact raw logo URL publicly returns an image response.

@@ -19,14 +19,12 @@ Planned files:
 - Verify readability at 32px before using it in OAuth consent or Marketplace SDK.
 - Do not use Google Forms, Google Workspace, or other Google product icons.
 
-## Manifest URL Plan
+## Manifest URL
 
-Keep `appsscript.json` unchanged until `logo-128.png` exists in a public repository.
-
-After the public repository is created and the PNG is committed, replace the temporary Google Forms icon URL with:
+`logo-128.png` is committed in the public repository and is used by `appsscript.json`:
 
 ```text
-https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png
+https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png
 ```
 
-Do not use this placeholder in `appsscript.json`. Update the manifest only after the raw GitHub URL is real and opens successfully over HTTPS.
+This URL was verified over HTTPS before the manifest was updated.

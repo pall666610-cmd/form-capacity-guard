@@ -148,3 +148,18 @@ Reusable rules learned:
 - Use `git status --short` before and after `git add .` in the first commit flow.
 - Do not push screenshots until a manual visual privacy pass checks for account emails, profile photos, private form titles, response data, and unrelated browser UI.
 - If `rg` is unavailable or blocked on Windows, use PowerShell `Select-String` fallback for public repository audits.
+
+## Current Update Decision After Public GitHub Repository Creation
+
+Decision: still wait before creating the global Skill, but add the following rules to the future `google-workspace-marketplace-addon-release` Skill.
+
+Reason: public GitHub setup and manifest logo replacement are complete, but OAuth consent screen, Marketplace SDK, Apps Script versioning, and reviewer feedback are still pending.
+
+Reusable rules learned:
+
+- Confirm release identity fields before repository creation: GitHub owner, repository name, developer / publisher name, and support email.
+- If GitHub CLI is unavailable, create an empty public repo in the GitHub web UI without README, gitignore, or license, then push the local initial commit.
+- In Windows Codex workspaces, sandbox-created `.git` metadata can require an exact-path Git `safe.directory` entry before elevated Git operations.
+- Before committing screenshots, perform a manual visual privacy pass and document the result.
+- Verify raw GitHub logo URLs with an HTTP response check before updating `appsscript.json`.
+- After public URL replacement, rerun both Apps Script syntax preflight and public repository audit before the follow-up commit.

@@ -54,7 +54,7 @@ The add-on is designed for event registration, appointment slots, small inventor
 
 English:
 
-For support, bug reports, and feature requests, open an issue in the public GitHub repository.
+For support, bug reports, and feature requests, open an issue at https://github.com/pall666610-cmd/form-capacity-guard/issues or contact linpoting5@gmail.com.
 
 ## Privacy summary / 隱私權摘要
 

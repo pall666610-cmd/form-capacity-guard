@@ -2,9 +2,9 @@
 
 Date: 2026-05-08
 
-Status: release preparation after partial real Google Form test pass.
+Status: public GitHub repository created and public URL replacement completed.
 
-Current completion: 88%.
+Current completion: 91%.
 
 ## 1. Marketplace, GitHub, OAuth Consistency Check
 
@@ -26,8 +26,8 @@ Current shared facts that must stay consistent across all release surfaces:
 Current consistency result:
 
 - `README.md`, `PRIVACY.md`, `TERMS.md`, `MARKETPLACE_LISTING_DRAFT.md`, `MARKETPLACE_SUBMISSION.md`, `MARKETPLACE_FIELD_CHECKLIST.md`, and `appsscript.json` are aligned on data access and OAuth scope intent.
-- `appsscript.json` still uses a Google Forms official logo URL. This must be replaced before Marketplace submission.
-- Public URL fields are not ready because the GitHub repository has not been created and a maintainer support email has not been selected.
+- `appsscript.json` uses the verified public raw GitHub custom logo URL.
+- GitHub repository, support email, Privacy URL, Terms URL, Support URL, Security URL, and logo URL are now filled with public values.
 
 ## 2. Language Decision
 
@@ -44,23 +44,26 @@ Files updated for this strategy:
 - `TERMS.md`: Traditional Chinese primary, English summary secondary.
 - `MARKETPLACE_LISTING_DRAFT.md`: Traditional Chinese listing copy plus English reviewer-friendly copy.
 
-## 3. GitHub Public Repository URL Plan
+## 3. GitHub Public Repository URLs
 
-Recommended repository:
+Public repository:
 
 - Repository name: `form-capacity-guard`
-- Repository URL placeholder: `https://github.com/<github-owner>/form-capacity-guard`
-- Issues URL placeholder: `https://github.com/<github-owner>/form-capacity-guard/issues`
-- Privacy URL placeholder: `https://github.com/<github-owner>/form-capacity-guard/blob/main/PRIVACY.md`
-- Terms URL placeholder: `https://github.com/<github-owner>/form-capacity-guard/blob/main/TERMS.md`
-- Security URL placeholder: `https://github.com/<github-owner>/form-capacity-guard/blob/main/SECURITY.md`
-- Logo URL placeholder: `https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png`
+- Repository URL: `https://github.com/pall666610-cmd/form-capacity-guard`
+- Issues URL: `https://github.com/pall666610-cmd/form-capacity-guard/issues`
+- Privacy URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md`
+- Terms URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/TERMS.md`
+- Security URL: `https://github.com/pall666610-cmd/form-capacity-guard/blob/main/SECURITY.md`
+- Logo URL: `https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png`
 
-Before making the repository public, replace:
+Resolved release identity:
 
-- `<github-owner>`
-- `<support-email@example.com>`
-- `<developer-name-or-organization>`
+- `pall666610-cmd`
+- `linpoting5@gmail.com`
+- `Lin Po-Ting`
+
+Still pending external setup values:
+
 - `<apps-script-script-id>`
 - `<apps-script-version-number>`
 - `<standard-cloud-project-id>`
@@ -75,13 +78,13 @@ Support email recommendation:
 Current manifest logo:
 
 ```text
-https://www.gstatic.com/images/branding/product/1x/forms_48dp.png
+https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png
 ```
 
 Decision:
 
-- This is a Google Forms official product icon and should not be used for the final Marketplace listing or OAuth consent screen.
-- Replace it with a custom logo before Apps Script version creation and final screenshots.
+- The Google Forms official product icon has been replaced.
+- Use the custom raw GitHub logo URL for Apps Script version creation, OAuth consent, and Marketplace setup.
 
 Required assets:
 
@@ -93,7 +96,9 @@ Current status:
 
 - `assets/logo-source.svg` is created.
 - `assets/logo-32.png` and `assets/logo-128.png` have been exported.
-- `appsscript.json` should not be changed to a placeholder URL. Keep the temporary local logo until the public `logo-128.png` URL exists.
+- `assets/logo-128.png` is committed to the public repository.
+- The raw GitHub logo URL returned `200 OK` with `Content-Type: image/png`.
+- `appsscript.json` has been updated to the verified public logo URL.
 
 Suggested visual direction:
 
@@ -102,15 +107,15 @@ Suggested visual direction:
 - Colors aligned with current UI: green `#0F9D58`, blue `#174EA6`, neutral `#202124`.
 - No Google Forms icon, Google logo, or confusing Google product branding.
 
-Manifest replacement after hosting:
+Manifest logo:
 
 ```json
-"logoUrl": "https://raw.githubusercontent.com/<github-owner>/form-capacity-guard/main/assets/logo-128.png"
+"logoUrl": "https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png"
 ```
 
 Important:
 
-- Use a public HTTPS URL.
+- Use the verified public HTTPS URL.
 - Retake or confirm OAuth/Marketplace screenshots after the logo is replaced if the logo appears in any reviewed flow.
 
 ## 5. Google Cloud, OAuth, Marketplace Actual Fill Checklist
@@ -119,7 +124,7 @@ Google Cloud standard project:
 
 - Project name: `Form Capacity Guard`
 - Project ID: `<standard-cloud-project-id>`
-- Owner/publisher: `<developer-name-or-organization>`
+- Owner/publisher: `Lin Po-Ting`
 - Enabled API: Google Workspace Marketplace SDK
 - Linked Apps Script project: `<apps-script-script-id>`
 
@@ -128,13 +133,13 @@ OAuth consent screen:
 - User type: External
 - Publishing status: Production before public Marketplace review
 - App name: `Form Capacity Guard`
-- User support email: `<support-email@example.com>`
+- User support email: `linpoting5@gmail.com`
 - App logo: custom logo URL, not Google Forms logo
 - Application home page: GitHub repository URL
 - Privacy Policy URL: GitHub `PRIVACY.md` public URL
 - Terms of Service URL: GitHub `TERMS.md` public URL
 - Authorized domains: domains used by GitHub/project/support URLs
-- Developer contact information: `<support-email@example.com>`
+- Developer contact information: `linpoting5@gmail.com`
 - Scopes: exactly the same three scopes as `appsscript.json`
 - Demo video: prepare if OAuth verification asks for it
 
@@ -151,7 +156,7 @@ Google Workspace Marketplace SDK:
 - Detailed description: use `MARKETPLACE_LISTING_DRAFT.md`
 - Category: Productivity or Business Tools
 - Pricing: Free
-- Developer name: `<developer-name-or-organization>`
+- Developer name: `Lin Po-Ting`
 - Developer website: GitHub repository URL or project site
 - Support URL: GitHub Issues URL or support page
 - Privacy Policy URL: public `PRIVACY.md` URL

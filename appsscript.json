@@ -10,7 +10,7 @@
   "addOns": {
     "common": {
       "name": "Form Capacity Guard",
-      "logoUrl": "https://www.gstatic.com/images/branding/product/1x/forms_48dp.png",
+      "logoUrl": "https://raw.githubusercontent.com/pall666610-cmd/form-capacity-guard/main/assets/logo-128.png",
       "layoutProperties": {
         "primaryColor": "#0F9D58",
         "secondaryColor": "#E8F0FE"

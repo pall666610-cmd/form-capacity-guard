@@ -66,4 +66,4 @@ Users can remove stored configuration by uninstalling the add-on, deleting the A
 
 ### Contact
 
-For privacy questions, open an issue in the public GitHub repository or contact the project maintainer listed in the Marketplace listing.
+For privacy questions, open an issue at https://github.com/pall666610-cmd/form-capacity-guard/issues or contact linpoting5@gmail.com.

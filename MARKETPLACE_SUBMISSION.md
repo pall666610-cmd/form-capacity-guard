@@ -67,9 +67,9 @@ Recommended initial settings:
 - Host app: Google Forms.
 - Visibility: Public.
 - Installation: Individual install first; admin install can be added later if needed.
-- Support URL: GitHub issues or a support page.
-- Privacy policy URL: public `PRIVACY.md` page.
-- Terms of service URL: public `TERMS.md` page.
+- Support URL: https://github.com/pall666610-cmd/form-capacity-guard/issues
+- Privacy policy URL: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md
+- Terms of service URL: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/TERMS.md
 
 Important: Google warns that after saving the public/private visibility option, it cannot be changed later.
 

@@ -2,7 +2,16 @@
 
 Form Capacity Guard 是一個開源的 Google Forms 擴充功能，目標是協助表單管理者設定「表單總人數上限」、「選項人數上限」與「達到條件後自動關閉表單」。
 
-本專案目前以 Google Apps Script 實作，未來目標是開源到 GitHub，並上架 Google Workspace Marketplace，讓其他使用者可以直接安裝使用。
+本專案目前以 Google Apps Script 實作，已公開到 GitHub，並準備上架 Google Workspace Marketplace，讓其他使用者可以直接安裝使用。
+
+## Public Links
+
+- Repository: https://github.com/pall666610-cmd/form-capacity-guard
+- Support: https://github.com/pall666610-cmd/form-capacity-guard/issues
+- Privacy Policy: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/PRIVACY.md
+- Terms of Service: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/TERMS.md
+- Security Policy: https://github.com/pall666610-cmd/form-capacity-guard/blob/main/SECURITY.md
+- Support email: linpoting5@gmail.com
 
 ## 核心功能
 
