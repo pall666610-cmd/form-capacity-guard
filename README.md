@@ -354,7 +354,7 @@ C:\Users\iL340\Documents\Codex\2026-05-08\outlook\google-form-capacity-addon
 
 ## 目前專案狀態
 
-目前完成度：62%
+目前完成度：91%
 
 已完成：
 
@@ -372,14 +372,15 @@ C:\Users\iL340\Documents\Codex\2026-05-08\outlook\google-form-capacity-addon
 - mistakes/workflow/Skill 判斷文件。
 - FCG-001 到 FCG-011 真實 Google Form 回測腳本與證據清單。
 - Marketplace 截圖拍攝順序。
+- Public GitHub repository: https://github.com/pall666610-cmd/form-capacity-guard
+- Public Privacy Policy、Terms、Support、Security、logo URL。
+- Custom logo source、32px PNG、128px PNG。
+- `appsscript.json` custom public logo URL。
 
 尚未完成：
 
 - 實際貼到 Apps Script 執行測試並記錄結果。
 - 實際建立 Google Form 回測並完成 `TEST_PLAN.md`。
-- GitHub repository 建立與公開。
-- Privacy Policy、Terms、Support URL 的公開網址。
-- Custom logo。
 - Marketplace screenshots。
 - Demo video。
 - Google Cloud standard project。
@@ -412,11 +413,11 @@ C:\Users\iL340\Documents\Codex\2026-05-08\outlook\google-form-capacity-addon
 ## Release Preparation Notes
 
 - 目前工作介面語言決定使用繁體中文，Marketplace listing、Privacy Policy 與 Terms 建議採繁中為主、英文輔助。
-- `appsscript.json` 仍使用 Google Forms 官方圖示，正式送審前必須替換成自訂 logo 的公開 HTTPS URL。
-- GitHub repository、Privacy Policy URL、Terms URL、Support URL、support email、logo URL 仍需在公開前補齊。
+- `appsscript.json` 已使用自訂 logo 的 public HTTPS URL。
+- GitHub repository、Privacy Policy URL、Terms URL、Support URL、support email、logo URL 已補齊。
 - FCG-001 到 FCG-005 已完成真實 Google Form 測試並記錄 Passed。
 - FCG-006 到 FCG-011 已由測試者確認 Passed，沒有額外截圖。
 - Marketplace reviewer instructions 草稿請見 `MARKETPLACE_REVIEWER_INSTRUCTIONS.md`。
 - Release preparation 彙整請見 `RELEASE_PREPARATION.md`。
-- Custom logo source SVG 已建立於 `assets/logo-source.svg`；PNG exports 與 public logo URL 尚未完成。
+- Custom logo source SVG、PNG exports 與 public logo URL 已完成。
 - Public repository audit 已建立於 `PUBLIC_REPOSITORY_AUDIT.md`。
